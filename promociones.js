@@ -10,9 +10,10 @@ function obtenerValor(id) {
   return isNaN(valor) ? 0 : valor;
 }
 
-// DESCUENTO 50% EN EL SEGUNDO
-function desc50Segundo(precio, cantidad) {
-  return Math.floor(cantidad / 2) * (precio * 0.3);
+// DESCUENTO 30% EN EL SEGUNDO (CORREGIDO EL NOMBRE)
+function desc30Segundo(precio, cantidad) {
+  // Retorna el 30% (0.3) del precio por cada par de productos.
+  return Math.floor(cantidad / 2) * (precio * 0.3); 
 }
 
 // DESCUENTO 3x2
@@ -37,15 +38,17 @@ document.getElementById("btnCalcular").addEventListener("click", function() {
   const subtotal = sub1 + sub2 + sub3 + sub4;
   
   // Obtener promoción seleccionada
+  // NOTA: Se espera que el radio button tenga ahora value="30seg"
   const promo = document.querySelector('input[name="promo"]:checked').value;
   
   let descuento = 0;
   
-  if (promo === "50seg") {
-    descuento = desc50Segundo(PRECIO_HELADERA, cant1) + 
-                desc50Segundo(PRECIO_TV, cant2) + 
-                desc50Segundo(PRECIO_AIRE, cant3) + 
-                desc50Segundo(PRECIO_CAFETERA, cant4);
+  // Condición corregida para usar "30seg"
+  if (promo === "30seg") {
+    descuento = desc30Segundo(PRECIO_HELADERA, cant1) + 
+                desc30Segundo(PRECIO_TV, cant2) + 
+                desc30Segundo(PRECIO_AIRE, cant3) + 
+                desc30Segundo(PRECIO_CAFETERA, cant4);
   } 
   else if (promo === "3x2") {
     descuento = desc3x2(PRECIO_HELADERA, cant1) + 
