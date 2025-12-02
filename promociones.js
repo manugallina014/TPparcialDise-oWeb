@@ -10,14 +10,15 @@ function obtenerValor(id) {
   return isNaN(valor) ? 0 : valor;
 }
 
-// DESCUENTO 30% EN EL SEGUNDO (CORREGIDO EL NOMBRE)
+// DESCUENTO 30% EN EL SEGUNDO (NOMBRE CORREGIDO)
 function desc30Segundo(precio, cantidad) {
-  // Retorna el 30% (0.3) del precio por cada par de productos.
+  // Lógica: 30% del precio por cada par de productos iguales.
   return Math.floor(cantidad / 2) * (precio * 0.3); 
 }
 
-// DESCUENTO 3x2
+// DESCUENTO 3x2 (YA FUNCIONA POR PRODUCTOS IGUALES)
 function desc3x2(precio, cantidad) {
+  // Lógica: 1 producto gratis por cada 3 comprados del mismo tipo.
   return Math.floor(cantidad / 3) * precio;
 }
 
@@ -38,7 +39,6 @@ document.getElementById("btnCalcular").addEventListener("click", function() {
   const subtotal = sub1 + sub2 + sub3 + sub4;
   
   // Obtener promoción seleccionada
-  // NOTA: Se espera que el radio button tenga ahora value="30seg"
   const promo = document.querySelector('input[name="promo"]:checked').value;
   
   let descuento = 0;
@@ -51,6 +51,7 @@ document.getElementById("btnCalcular").addEventListener("click", function() {
                 desc30Segundo(PRECIO_CAFETERA, cant4);
   } 
   else if (promo === "3x2") {
+    // Ya aplica por artículo (cant1, cant2, etc. son separados)
     descuento = desc3x2(PRECIO_HELADERA, cant1) + 
                 desc3x2(PRECIO_TV, cant2) + 
                 desc3x2(PRECIO_AIRE, cant3) + 

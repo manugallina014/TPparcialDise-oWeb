@@ -477,3 +477,9 @@ body {
     font-size: 2.0rem;
   }
 }
+.container img {
+  /* Limita todas las imágenes dentro del contenedor principal */
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
