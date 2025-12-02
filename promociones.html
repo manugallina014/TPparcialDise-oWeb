@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Promociones - TECNO G Real</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="promociones.css">
+  <script src="promociones.js" defer></script>
 </head>
 <body>
   <header>
@@ -23,25 +23,22 @@
   <main class="container">
     <h2>🔥 Promociones Especiales</h2>
 
-    <!-- Info promociones -->
     <div class="info-promos">
       <h3>Promociones Activas:</h3>
-      <p>🎁 <strong>Llevá 2 productos y obtené 30% en el segundo</strong></p>
       <p>🎯 <strong>3x2 en productos seleccionados</strong></p>
       <p>💰 <strong>10% de descuento por compras superiores a $900.000</strong></p>
     </div>
 
-    <!-- Selector de productos -->
     <div class="selector">
-      <h3>Seleccionar Productos y Cantidades</h3>
-      
+      <h3>Ingresar Cantidad</h3>
+
       <div class="producto-item">
-        <label>Heladera Samsung - $850.000</label>
+        <label>Heladera - $850.000</label>
         <input type="number" id="cant1" value="0" min="0">
       </div>
 
       <div class="producto-item">
-        <label>Smart TV 55" - $950.000</label>
+        <label>TV - $950.000</label>
         <input type="number" id="cant2" value="0" min="0">
       </div>
 
@@ -56,17 +53,11 @@
       </div>
     </div>
 
-    <!-- Seleccionar promoción -->
     <div class="promo-selector">
       <h3>Seleccionar Promoción</h3>
       
       <label>
-        <input type="radio" name="promo" value="50seg" checked>
-        30% en el segundo producto
-      </label>
-
-      <label>
-        <input type="radio" name="promo" value="3x2">
+        <input type="radio" name="promo" value="3x2" checked>
         3x2
       </label>
 
@@ -78,7 +69,6 @@
       <button id="btnCalcular" class="btn">Calcular Total</button>
     </div>
 
-    <!-- Resultados -->
     <div id="resultados" class="resultados">
       <h3>Resumen de Compra</h3>
       <div class="resultado-item">
@@ -90,12 +80,10 @@
         <span id="tDesc">$0</span>
       </div>
       <div class="resultado-total">
-        <strong>TOTAL FINAL:</strong><br>
+        <strong>TOTAL FINAL:</strong> 
         <span id="tFinal">$0</span>
       </div>
     </div>
   </main>
-
-  <script src="promociones.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-// PRECIOS DE PRODUCTOS (const: el precio no cambia)
+// PRECIOS DE PRODUCTOS
 const PRECIO_HELADERA = 850000;
 const PRECIO_TV = 950000;
 const PRECIO_AIRE = 1200000;
@@ -7,14 +7,7 @@ const PRECIO_CAFETERA = 180000;
 // FUNCIÓN PARA OBTENER VALORES
 function obtenerValor(id) {
   const valor = parseFloat(document.getElementById(id).value);
-  // Usa const internamente: el valor solo se asigna aquí
   return isNaN(valor) ? 0 : valor;
-}
-
-// CORRECCIÓN: FUNCIÓN PARA EL 30% EN EL SEGUNDO
-function desc30Segundo(precio, cantidad) {
-  // Descuenta el 30% del precio por cada par de productos iguales.
-  return Math.floor(cantidad / 2) * (precio * 0.3);
 }
 
 // FUNCIÓN PARA EL 3x2 (Correcta para artículos iguales)
@@ -26,7 +19,7 @@ function desc3x2(precio, cantidad) {
 // LÓGICA PRINCIPAL: CALCULAR TOTAL
 document.getElementById("btnCalcular").addEventListener("click", function() {
   
-  // 1. OBTENER CANTIDADES (Usamos const porque se leen una sola vez)
+  // 1. OBTENER CANTIDADES
   const cant1 = obtenerValor("cant1");
   const cant2 = obtenerValor("cant2");
   const cant3 = obtenerValor("cant3");
@@ -43,18 +36,10 @@ document.getElementById("btnCalcular").addEventListener("click", function() {
   // 3. OBTENER PROMOCIÓN
   const promo = document.querySelector('input[name="promo"]:checked').value;
   
-  // Usamos let: esta variable se inicializa en 0 y luego cambia de valor
   let descuento = 0; 
   
-  // 4. APLICAR DESCUENTO (Usando IF / ELSE IF)
-  if (promo === "30seg") {
-    descuento = desc30Segundo(PRECIO_HELADERA, cant1) + 
-                desc30Segundo(PRECIO_TV, cant2) + 
-                desc30Segundo(PRECIO_AIRE, cant3) + 
-                desc30Segundo(PRECIO_CAFETERA, cant4);
-  } 
-  else if (promo === "3x2") {
-    // La lógica de 3x2 funciona para artículos iguales porque se calcula por separado.
+  // 4. APLICAR DESCUENTO (El 30% fue eliminado, ahora el 3x2 es el primer 'if')
+  if (promo === "3x2") {
     descuento = desc3x2(PRECIO_HELADERA, cant1) + 
                 desc3x2(PRECIO_TV, cant2) + 
                 desc3x2(PRECIO_AIRE, cant3) + 
@@ -67,7 +52,6 @@ document.getElementById("btnCalcular").addEventListener("click", function() {
   }
   
   // 5. CALCULAR TOTAL FINAL
-  // Usamos let: esta variable se calcula después de los descuentos
   let total = Math.max(0, subtotal - descuento);
   
   // 6. MOSTRAR RESULTADOS
